@@ -1,6 +1,6 @@
 import { auth } from '@/auth'
-import SignIn from '@/component/sign-in'
-import { SignOut } from '@/component/sign-out'
+import SignIn from '@/components/sign-in'
+import { SignOut } from '@/components/sign-out'
 
 const title = 'ZEN大Slackのチャンネル一覧'
 const description = 'ZEN大学のSlackチャンネルを表示するサイトです。'
