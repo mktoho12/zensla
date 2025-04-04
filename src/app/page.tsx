@@ -9,6 +9,15 @@ const url = 'https://zen-slack-channels.mktoho.dev'
 export const metadata = {
   title,
   description,
+  icons: {
+    icon: [
+      { url: '/favicon.ico', type: 'image/x-icon', sizes: 'any' },
+      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
+    ],
+    apple: '/apple-touch-icon.png', // iOSホーム画面用
+    shortcut: '/favicon.ico',
+  },
   openGraph: {
     title,
     description,
