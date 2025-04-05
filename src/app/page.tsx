@@ -1,46 +1,7 @@
 import { auth } from '@/auth'
 import SignIn from '@/components/sign-in'
 import { SignOut } from '@/components/sign-out'
-
-const title = 'ZEN大Slackのチャンネル一覧'
-const description = 'ZEN大学のSlackチャンネルを表示するサイトです。'
-const url = 'https://zen-slack-channels.mktoho.dev'
-
-export const metadata = {
-  title,
-  description,
-  icons: {
-    icon: [
-      { url: '/favicon.ico', type: 'image/x-icon', sizes: 'any' },
-      { url: '/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
-      { url: '/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
-    ],
-    apple: '/apple-touch-icon.png', // iOSホーム画面用
-    shortcut: '/favicon.ico',
-  },
-  openGraph: {
-    title,
-    description,
-    url,
-    siteName: 'ZenChannels',
-    images: [
-      {
-        url: `${url}/zen-channels-ogp.png`,
-        width: 1200,
-        height: 630,
-      },
-    ],
-    locale: 'ja_JP',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title,
-    description,
-    images: [`${url}/zen-channels-ogp.png`],
-    creator: '@mktoho12',
-  },
-}
+import Link from 'next/link'
 
 export default async function Home() {
   const session = await auth()
@@ -50,12 +11,27 @@ export default async function Home() {
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
         {session?.user ? (
           <>
-            <p className="text-lg text-gray-500">{session.user.email}</p>
+            <h1 className="font-semibold">ZEN大学Slackのチャンネル一覧</h1>
+            <ul className="list-disc list-inside">
+              <li>
+                <Link href="/active-club">賑やかなサークル</Link>
+              </li>
+              <li>
+                <Link href="/active-times">賑やかな個人チャンネル</Link>
+              </li>
+            </ul>
+
+            <p className="text-sm text-gray-500">
+              以下のアカウントでログインしています。
+              <br />
+              {session.user.email}
+            </p>
+
             <SignOut />
           </>
         ) : (
           <>
-            <h1 className="text-4xl font-bold">Welcome to NextAuth</h1>
+            <h1 className="text-4xl font-bold">ZEN大学Slackのチャンネル一覧</h1>
             <SignIn />
           </>
         )}
