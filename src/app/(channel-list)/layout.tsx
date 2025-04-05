@@ -1,15 +1,8 @@
 'use client'
 
 import { Channel } from '@/lib/googlesheets'
-import { createContext, useEffect, useState } from 'react'
-
-export const ChannelListContext = createContext<{
-  channels: Channel[]
-  loading: boolean
-}>({
-  channels: [],
-  loading: true,
-})
+import { useEffect, useState } from 'react'
+import { ChannelListContext } from './context'
 
 export default function ChannelListLayout({
   children,

@@ -3,7 +3,7 @@
 import ChannelCard from '@/components/channel/ChannelCard'
 import { Button } from '@/components/ui/button'
 import { useContext, useState } from 'react'
-import { ChannelListContext } from '../layout'
+import { ChannelListContext } from '../context'
 
 export default function NewClubPageContent() {
   const { channels, loading } = useContext(ChannelListContext)
