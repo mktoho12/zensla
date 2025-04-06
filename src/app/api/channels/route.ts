@@ -27,7 +27,7 @@ export async function GET() {
   const channels = await fetchSheetData({
     accessToken,
     spreadsheetId: '1VJTO1bgO0pizBk5IXpBPtwOskIEe7rnKi8Oc7R7nMhw',
-    sheetName: '20250404',
+    sheetName: 'latest',
     range: 'A:J',
   })
 
