@@ -1,6 +1,7 @@
 import { auth } from '@/auth'
 import SignIn from '@/components/sign-in'
 import { SignOut } from '@/components/sign-out'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default async function Home() {
@@ -13,8 +14,21 @@ export default async function Home() {
       </header>
 
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+        <Image
+          src="/mktoho.png"
+          alt="アプリのロゴ"
+          width={100}
+          height={100}
+          className="mx-auto"
+        />
         {session?.user ? (
           <>
+            <p className="text-sm text-gray-500">
+              以下のアカウントでログインしています。
+              <br />
+              {session.user.email}
+            </p>
+
             <ul className="list-disc list-inside">
               <li>
                 <Link href="/active-club">賑やかなサークル</Link>
@@ -23,21 +37,35 @@ export default async function Home() {
                 <Link href="/active-times">賑やかな個人チャンネル</Link>
               </li>
             </ul>
-
-            <p className="text-sm text-gray-500">
-              以下のアカウントでログインしています。
-              <br />
-              {session.user.email}
-            </p>
-
             <SignOut />
           </>
         ) : (
-          <SignIn />
+          <div className="flex flex-col gap-4 max-w-2xl">
+            <p>
+              このサイトは、ZEN大学Slackのチャンネル一覧を見やすくしたものです。
+              <br />
+              一覧上にメンバー数や一日あたりのメッセージ数を表示しているので、
+              <br />
+              賑わっているチャンネルを見つけやすくなります。
+              <br />
+            </p>
+
+            <p>ZEN大学のメールアドレスでログインする必要があります。</p>
+            <SignIn />
+          </div>
         )}
       </main>
 
       <footer className="flex items-center justify-center gap-4 row-start-3">
+        <p className="text-sm text-gray-500">
+          <Link
+            href="https://github.com/mktoho12/zen-slack-channels"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Github
+          </Link>
+        </p>
         <p className="text-sm text-gray-500">
           <Link href="/privacy-policy">プライバシーポリシー</Link>
         </p>
