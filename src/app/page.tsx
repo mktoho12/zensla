@@ -10,17 +10,22 @@ export default async function Home() {
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
       <header className="flex items-start gap-4 w-full">
-        <h1 className="text-xl font-bold">ZEN大学Slackのチャンネル一覧</h1>
+        <div className="flex gap-2 justify-start items-center">
+          <Image
+            src="/mktoho.png"
+            alt="アプリのロゴ"
+            width={50}
+            height={50}
+            className="mx-auto"
+          />
+          <h1 className="text-xl font-bold">えむけーの開発</h1>
+        </div>
       </header>
 
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          src="/mktoho.png"
-          alt="アプリのロゴ"
-          width={100}
-          height={100}
-          className="mx-auto"
-        />
+        <div className="flex gap-2 justify-start items-center">
+          <p>ZEN大学Slackのチャンネル一覧</p>
+        </div>
         {session?.user ? (
           <>
             <p className="text-sm text-gray-500">
