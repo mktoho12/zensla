@@ -79,10 +79,10 @@ export default async function RootLayout({
                   <Link href="/">
                     <div className="flex gap-4 justify-start items-center">
                       <Image
-                        src="/zensla_logo.png"
+                        src="/zensla_logo.svg"
                         alt="Zensla Logo"
-                        width={50}
-                        height={50}
+                        width={50.25}
+                        height={53.19975}
                         className="mx-auto"
                       />
                       <h1 className="text-3xl font-bold">Zensla</h1>
