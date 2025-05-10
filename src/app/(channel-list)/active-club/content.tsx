@@ -2,7 +2,7 @@
 
 import ChannelCard from '@/components/channel/ChannelCard'
 import { Button } from '@/components/ui/button'
-import { differenceInDays } from 'date-fns'
+import { messageCountPerDayDesc } from '@/lib/channel/sort-compares'
 import { useContext, useState } from 'react'
 import { ChannelListContext } from '../context'
 
@@ -13,15 +13,7 @@ export default function NewClubPageContent() {
 
   const newClubChannels = channels
     .filter(c => c.type === 'サークル')
-    .sort((a, b) => {
-      const aDaysSinceCreation = differenceInDays(new Date(), a.createdAt)
-      const bDaysSinceCreation = differenceInDays(new Date(), b.createdAt)
-      const aMessagePerDay = a.messageCount / aDaysSinceCreation
-      const bMessagePerDay = b.messageCount / bDaysSinceCreation
-      if (aMessagePerDay > bMessagePerDay) return -1
-      if (aMessagePerDay < bMessagePerDay) return 1
-      return 0
-    })
+    .sort(messageCountPerDayDesc)
     .slice(0, more ? undefined : 10)
 
   return (
