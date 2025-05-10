@@ -1,9 +1,9 @@
 import { auth0 } from '@/lib/auth'
-import { StackProvider, StackTheme } from "@stackframe/stack";
-import { stackServerApp } from "../stack";
+import { StackProvider, StackTheme } from '@stackframe/stack'
 import { Geist, Geist_Mono } from 'next/font/google'
 import Image from 'next/image'
 import Link from 'next/link'
+import { stackServerApp } from '../stack'
 import './globals.css'
 
 const geistSans = Geist({
@@ -16,9 +16,9 @@ const geistMono = Geist_Mono({
   subsets: ['latin'],
 })
 
-const title = 'ZEN大Slackのチャンネル一覧'
+const title = 'Zensla - ZEN大学のSlackチャンネルを表示するサイト'
 const description = 'ZEN大学のSlackチャンネルを表示するサイトです。'
-const url = 'https://zen-slack-channels.mktoho.dev'
+const url = 'https://zensla.mktoho.dev'
 
 export const metadata = {
   title: {
@@ -39,7 +39,7 @@ export const metadata = {
     title,
     description,
     url,
-    siteName: 'ZenChannels',
+    siteName: 'Zensla',
     images: [
       {
         url: `${url}/zen-channels-ogp.png`,
@@ -70,55 +70,59 @@ export default async function RootLayout({
     <html lang="ja">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      ><StackProvider app={stackServerApp}><StackTheme>
-        <div className="grid grid-rows-[50px_1fr_20px] items-center justify-items-center min-h-screen p-8 gap-16 sm:p-10 font-[family-name:var(--font-geist-sans)] max-w-">
-          <header className="flex justify-between items-center gap-4 w-full">
-            <div className="flex items-start gap-4">
-              <Link href="/">
-                <div className="flex gap-4 justify-start items-center">
-                  <Image
-                    src="/zensla_logo.png"
-                    alt="Zensla Logo"
-                    width={50}
-                    height={50}
-                    className="mx-auto"
-                  />
-                  <h1 className="text-3xl font-bold">Zensla</h1>
+      >
+        <StackProvider app={stackServerApp}>
+          <StackTheme>
+            <div className="grid grid-rows-[50px_1fr_20px] items-center justify-items-center min-h-screen p-8 gap-16 sm:p-10 font-[family-name:var(--font-geist-sans)] max-w-">
+              <header className="flex justify-between items-center gap-4 w-full">
+                <div className="flex items-start gap-4">
+                  <Link href="/">
+                    <div className="flex gap-4 justify-start items-center">
+                      <Image
+                        src="/zensla_logo.png"
+                        alt="Zensla Logo"
+                        width={50}
+                        height={50}
+                        className="mx-auto"
+                      />
+                      <h1 className="text-3xl font-bold">Zensla</h1>
+                    </div>
+                  </Link>
                 </div>
-              </Link>
-            </div>
-            <div className="flex justify-end items-center gap-4">
-              {session && (
-                // <p>{session.user.picture}</p>
-                <Image
-                  src={session.user?.picture ?? '/default-profile.png'}
-                  alt="User Profile"
-                  width={50}
-                  height={50}
-                  className="rounded-full"
-                />
-              )}
-            </div>
-          </header>
+                <div className="flex justify-end items-center gap-4">
+                  {session && (
+                    // <p>{session.user.picture}</p>
+                    <Image
+                      src={session.user?.picture ?? '/default-profile.png'}
+                      alt="User Profile"
+                      width={50}
+                      height={50}
+                      className="rounded-full"
+                    />
+                  )}
+                </div>
+              </header>
 
-          {children}
+              {children}
 
-          <footer className="flex items-center justify-center gap-4 row-start-3">
-            <p className="text-sm text-gray-500">
-              <Link
-                href="https://github.com/mktoho12/zen-slack-channels"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Github
-              </Link>
-            </p>
-            <p className="text-sm text-gray-500">
-              <Link href="/privacy-policy">プライバシーポリシー</Link>
-            </p>
-          </footer>
-        </div>
-      </StackTheme></StackProvider></body>
+              <footer className="flex items-center justify-center gap-4 row-start-3">
+                <p className="text-sm text-gray-500">
+                  <Link
+                    href="https://github.com/mktoho12/zensla"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Github
+                  </Link>
+                </p>
+                <p className="text-sm text-gray-500">
+                  <Link href="/privacy-policy">プライバシーポリシー</Link>
+                </p>
+              </footer>
+            </div>
+          </StackTheme>
+        </StackProvider>
+      </body>
     </html>
   )
 }

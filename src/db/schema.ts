@@ -1,4 +1,4 @@
-import { InferSelectModel } from 'drizzle-orm'
+import { InferInsertModel, InferSelectModel } from 'drizzle-orm'
 import { integer, pgTable, serial, text, timestamp } from 'drizzle-orm/pg-core'
 
 export const baseColumns = {
@@ -18,3 +18,4 @@ export const channels = pgTable('channels', {
 })
 
 export type Channel = InferSelectModel<typeof channels>
+export type ChannelInsert = InferInsertModel<typeof channels>

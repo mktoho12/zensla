@@ -30,7 +30,9 @@ export default function ChannelCard({ channel }: { channel: Channel }) {
         </Link>
         <p className="text-xs text-gray-300 text-right">
           <span className="text-lg font-bold mr-1">
-            {daysSinceCreation.toLocaleString()}
+            {Math.round(
+              channel.messageCount / daysSinceCreation
+            ).toLocaleString()}
           </span>
           発言 / 日
         </p>
