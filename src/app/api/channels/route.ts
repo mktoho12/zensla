@@ -1,40 +1,19 @@
-import { auth } from '@/auth'
-import { fetchSheetData } from '@/lib/googlesheets'
+import { db } from '@/db'
+import { channels } from '@/db/schema'
+import { auth0 } from '@/lib/auth'
+import { NextResponse } from 'next/server'
 
 export async function GET() {
-  const session = await auth()
-
-  if (!session) {
-    return new Response(
-      JSON.stringify({
-        status: 401,
-        message: 'セッションがありません',
-      })
-    )
-  }
-
-  const { accessToken } = session
+  const accessToken = await auth0.getAccessToken()
 
   if (!accessToken) {
-    return new Response(
-      JSON.stringify({
-        status: 401,
-        message: 'アクセストークンがありません',
-      })
-    )
+    return NextResponse.json({
+      status: 401,
+      message: 'アクセストークンがありません',
+    })
   }
 
-  const channels = await fetchSheetData({
-    accessToken,
-    spreadsheetId: '1VJTO1bgO0pizBk5IXpBPtwOskIEe7rnKi8Oc7R7nMhw',
-    sheetName: 'latest',
-    range: 'A:J',
-  })
+  const channelData = await db.select().from(channels)
 
-  return new Response(JSON.stringify(channels), {
-    status: 200,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  })
+  return NextResponse.json(channelData)
 }

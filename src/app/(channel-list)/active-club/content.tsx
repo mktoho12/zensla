@@ -2,6 +2,7 @@
 
 import ChannelCard from '@/components/channel/ChannelCard'
 import { Button } from '@/components/ui/button'
+import { differenceInDays } from 'date-fns'
 import { useContext, useState } from 'react'
 import { ChannelListContext } from '../context'
 
@@ -12,14 +13,22 @@ export default function NewClubPageContent() {
 
   const newClubChannels = channels
     .filter(c => c.type === 'サークル')
-    .sort((a, b) => b.messagePerDay - a.messagePerDay)
+    .sort((a, b) => {
+      const aDaysSinceCreation = differenceInDays(new Date(), a.createdAt)
+      const bDaysSinceCreation = differenceInDays(new Date(), b.createdAt)
+      const aMessagePerDay = a.messageCount / aDaysSinceCreation
+      const bMessagePerDay = b.messageCount / bDaysSinceCreation
+      if (aMessagePerDay > bMessagePerDay) return -1
+      if (aMessagePerDay < bMessagePerDay) return 1
+      return 0
+    })
     .slice(0, more ? undefined : 10)
 
   return (
     <>
       <div className="flex flex-col gap-[32px] md:grid md:grid-cols-2">
         {newClubChannels.map(channel => (
-          <ChannelCard key={channel.channelId} channel={channel} />
+          <ChannelCard key={channel.slackId} channel={channel} />
         ))}
       </div>
       {loading && (

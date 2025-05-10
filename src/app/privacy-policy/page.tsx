@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 export default function PrivacyPolicyPage() {
   return (
-    <div className="p-8 pb-20 sm:p-20 prose prose-neutral dark:prose-invert max-w-none">
+    <main className="prose prose-neutral dark:prose-invert max-w-none">
       <h1 className="">プライバシーポリシー</h1>
 
       <p>
@@ -52,12 +52,12 @@ export default function PrivacyPolicyPage() {
       <p>
         プライバシーポリシーに関するご質問は、下記のメールアドレスまでお問い合わせください。
       </p>
-      <p>📧 mk@mktoho.org</p>
+      <p>📧 mk@mktoho.dev</p>
 
       <p>（最終更新日：2025年4月5日）</p>
       <p className="text-sm text-gray-500">
         <Link href="/">ホームに戻る</Link>
       </p>
-    </div>
+    </main>
   )
 }

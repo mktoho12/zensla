@@ -1,6 +1,6 @@
 'use client'
 
-import { Channel } from '@/lib/googlesheets'
+import { Channel } from '@/db/schema'
 import { useEffect, useState } from 'react'
 import { ChannelListContext } from './context'
 

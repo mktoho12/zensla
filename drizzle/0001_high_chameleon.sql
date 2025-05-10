@@ -1,0 +1,1 @@
+ALTER TABLE "channels" ADD COLUMN "slack_id" text NOT NULL;

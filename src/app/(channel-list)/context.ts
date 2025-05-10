@@ -1,6 +1,6 @@
 'use client'
 
-import { Channel } from '@/lib/googlesheets'
+import { Channel } from '@/db/schema'
 import { createContext } from 'react'
 
 export const ChannelListContext = createContext<{

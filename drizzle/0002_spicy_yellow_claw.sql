@@ -1,0 +1,1 @@
+ALTER TABLE "channels" ADD COLUMN "message_count" numeric(10, 0) NOT NULL;
