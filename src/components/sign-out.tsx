@@ -1,9 +1,17 @@
+import { signOut } from '@/auth'
 import { Button } from './ui/button'
 
-export async function SignOut() {
+export function SignOut() {
   return (
-    <Button asChild variant="outline">
-      <a href="/auth/logout">Sign Out</a>
-    </Button>
+    <form
+      action={async () => {
+        'use server'
+        await signOut()
+      }}
+    >
+      <Button type="submit" variant="outline" className="cursor-pointer">
+        Sign Out
+      </Button>
+    </form>
   )
 }

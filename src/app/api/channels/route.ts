@@ -1,10 +1,19 @@
+import { auth } from '@/auth'
 import { db } from '@/db'
 import { channels } from '@/db/schema'
-import { auth0 } from '@/lib/auth'
 import { NextResponse } from 'next/server'
 
 export async function GET() {
-  const accessToken = await auth0.getAccessToken()
+  const session = await auth()
+
+  if (!session) {
+    return NextResponse.json({
+      status: 401,
+      message: 'ログインしていません',
+    })
+  }
+
+  const accessToken = session?.accessToken
 
   if (!accessToken) {
     return NextResponse.json({

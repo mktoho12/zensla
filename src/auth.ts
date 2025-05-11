@@ -7,9 +7,8 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       authorization: {
         params: {
           access_type: 'offline',
-          prompt: 'consent',
-          scope:
-            'openid email https://www.googleapis.com/auth/spreadsheets.readonly',
+          scope: 'openid email',
+          hd: 'student.zen.ac.jp',
         },
       },
     }),
