@@ -1,3 +1,4 @@
+import { SessionProvider } from 'next-auth/react'
 import { Geist, Geist_Mono } from 'next/font/google'
 import { ReactNode } from 'react'
 import './globals.css'
@@ -59,17 +60,11 @@ export const metadata = {
   },
 }
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: ReactNode
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="ja">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="ja" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body>
+        <SessionProvider>{children}</SessionProvider>
       </body>
     </html>
   )

@@ -21,6 +21,7 @@ export const channels = pgTable('channels', {
   memberCount: integer('member_count').notNull(),
   purpose: text('purpose'),
   type: text('type', { enum: ['サークル', '個人', '授業', '公式'] }),
+  birthday: date('birthday', { mode: 'date' }),
 })
 
 export const channelHistories = pgTable('channel_histories', {
