@@ -1,5 +1,5 @@
 import { Channel } from '@/db/schema'
-import { differenceInDays, format } from 'date-fns'
+import { format } from 'date-fns'
 import Link from 'next/link'
 import {
   Card,
@@ -11,9 +11,9 @@ import {
 } from '../ui/card'
 
 export default function ChannelCard({ channel }: { channel: Channel }) {
-  const daysSinceCreation = Math.floor(
-    differenceInDays(new Date(), channel.createdAt)
-  )
+  // const daysSinceCreation = Math.floor(
+  //   differenceInDays(new Date(), channel.createdAt)
+  // )
 
   return (
     <Card className="w-full max-w-[400px]">
@@ -30,9 +30,9 @@ export default function ChannelCard({ channel }: { channel: Channel }) {
         </Link>
         <p className="text-xs text-gray-300 text-right">
           <span className="text-lg font-bold mr-1">
-            {Math.round(
+            {/* {Math.round(
               channel.messageCount / daysSinceCreation
-            ).toLocaleString()}
+            ).toLocaleString()} */}
           </span>
           発言 / 日
         </p>
@@ -46,7 +46,7 @@ export default function ChannelCard({ channel }: { channel: Channel }) {
 
       <CardFooter className="grid grid-cols-4 gap-2 text-sm text-gray-500">
         <p>👥 {channel.memberCount}</p>
-        <p>💬 {channel.messageCount.toLocaleString()}</p>
+        {/* <p>💬 {channel.messageCount.toLocaleString()}</p> */}
         <p className="col-span-2">
           📅: {format(channel.createdAt, 'yyyy/MM/dd')}
         </p>

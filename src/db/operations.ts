@@ -48,7 +48,7 @@ export async function getChannelHistories(channelId: number) {
 
 export async function getChannelHistoryByDate(
   channelId: number,
-  targetDate: string
+  targetDate: Date
 ) {
   return await db
     .select()
