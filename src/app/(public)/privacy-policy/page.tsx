@@ -11,9 +11,7 @@ export default function PrivacyPolicyPage() {
 
       <h2>1. 取得する情報</h2>
       <ul>
-        <li>ユーザーの氏名（Googleアカウントに登録されたもの）</li>
         <li>メールアドレス</li>
-        <li>プロフィール画像</li>
       </ul>
 
       <h2>2. 利用目的</h2>
@@ -54,7 +52,7 @@ export default function PrivacyPolicyPage() {
       </p>
       <p>📧 mk@mktoho.dev</p>
 
-      <p>（最終更新日：2025年4月5日）</p>
+      <p>（最終更新日：2025年5月18日）</p>
       <p className="text-sm text-gray-500">
         <Link href="/">ホームに戻る</Link>
       </p>
