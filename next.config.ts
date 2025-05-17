@@ -13,6 +13,12 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
+  logging: {
+    incomingRequests: {
+      ignore: [/\.well-known\/appspecific\/com\.chrome\.devtools\.json/],
+    },
+  },
 }
 
 export default nextConfig
