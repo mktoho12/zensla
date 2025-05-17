@@ -3,11 +3,6 @@ import { handleApiAuth } from './middleware/api-auth'
 import { handleAuth } from './middleware/auth'
 
 export async function middleware(request: NextRequest) {
-  console.log('Middleware Start:', {
-    pathname: request.nextUrl.pathname,
-    url: request.url,
-  })
-
   // APIの認証チェック
   const apiAuthResponse = await handleApiAuth(request)
   if (apiAuthResponse) return apiAuthResponse

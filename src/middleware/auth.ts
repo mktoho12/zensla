@@ -5,17 +5,7 @@ export async function handleAuth(request: NextRequest) {
   const { pathname } = request.nextUrl
   const isRoot = pathname === '/'
 
-  console.log('Auth Middleware:', {
-    pathname,
-    isRoot,
-    url: request.url,
-  })
-
   const session = await auth()
-
-  console.log('Auth Middleware - Session:', {
-    hasSession: !!session,
-  })
 
   if (isRoot) {
     if (session) {
