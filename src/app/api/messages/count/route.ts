@@ -13,6 +13,7 @@ export async function GET() {
   try {
     // 期間の計算
     const now = new Date()
+    now.setHours(23, 59, 59, 999)
 
     // 今月の期間
     const thisMonthStart = new Date(now.getFullYear(), now.getMonth(), 1)
