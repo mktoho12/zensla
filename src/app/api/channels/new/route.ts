@@ -1,7 +1,7 @@
 import { auth } from '@/auth'
 import { db } from '@/db'
 import { channels } from '@/db/schema'
-import { eq, sql } from 'drizzle-orm'
+import { sql } from 'drizzle-orm'
 import { NextResponse } from 'next/server'
 
 export async function GET(request: Request) {
@@ -30,7 +30,9 @@ export async function GET(request: Request) {
         type: channels.type,
       })
       .from(channels)
-      .where(sql`DATE(${channels.birthday}) = ${dateStr}::date AND ${channels.isHidden} = 0`)
+      .where(
+        sql`DATE(${channels.birthday}) = ${dateStr}::date AND ${channels.isHidden} = 0`
+      )
       .execute()
 
     return NextResponse.json({
