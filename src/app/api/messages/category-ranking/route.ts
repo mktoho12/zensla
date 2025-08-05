@@ -43,7 +43,7 @@ export async function GET(request: Request) {
       })
       .from(channelHistories)
       .innerJoin(channels, eq(channels.id, channelHistories.channelId))
-      .where(and(typeCondition, gte(channelHistories.targetDate, from)))
+      .where(and(typeCondition, gte(channelHistories.targetDate, from), eq(channels.isHidden, 0)))
       .groupBy(channels.name, channels.slackId)
       .orderBy(desc(sql`sum(${channelHistories.messageCount})`))
       .limit(limit)
